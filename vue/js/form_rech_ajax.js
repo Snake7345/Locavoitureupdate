@@ -65,8 +65,8 @@ var clicActive2 = function(){
     $.post( destination2, { voiture : $(this).closest('tr').attr('id') } )
         .done(function( data ) {
 
-                elem.empty();
-                elem.html(data);
+                elem2.empty();
+                elem2.html(data);
             }
         );
 };
