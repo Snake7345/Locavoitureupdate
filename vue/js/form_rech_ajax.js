@@ -32,7 +32,7 @@ var visuPopup = function(event){
 //------------------------------------------------------------------------------------------
 $( '.Voir' ).each(function(index) { $(this).on("click", visuPopup); });
 
-var clicActive = function(){
+var toggleUtilisateurActive = function(){
 	var elem = this;
 
 	var destination;
@@ -41,16 +41,17 @@ var clicActive = function(){
     }else{
         destination='control_utilisateur_desactive.php';
     };
-    $.post( destination, { utilisateur : $(this).closest('tr').attr('id') } )
-        .done(function( data ) {
-
-                elem.empty();
-                elem.html(data);
-            }
-        );
+    $.post(
+        destination,
+        {
+            utilisateur : $(this).closest('tr').attr('id')
+        }
+    ).done(function( data ) {
+        this.checked = data.value;
+    });
 };
 //--------------------------------------------------------
-$('#RESULT_RECH_FICH .Actif').on('change',clicActive);
+$('#RESULT_RECH_FICH .Actif').on('change', toggleUtilisateurActive);
 
 
 var clicActive2 = function(){

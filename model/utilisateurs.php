@@ -54,7 +54,7 @@ class utilisateurs extends Model{
 	}
 //----------------------------------------------------------------------------------------------------------------
     function Employees_activ($Utilisateur){
-        $sql= "call Employees_activ (".$Utilisateur.") ";
+        $sql= "call Employees_activ ('".$Utilisateur."') ";
         return $this->connection->query($sql);
     }
 
