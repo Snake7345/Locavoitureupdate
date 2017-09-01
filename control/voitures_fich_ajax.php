@@ -34,8 +34,18 @@
 		else{
 				if(!(isset($_POST['FormModeAjax']) && $_POST['FormModeAjax'] == "1")){
 					$voitures->id[0]=$_POST['RECH_FICH'];	
-					$voitures->read('voitureID "ID", marque "Marque ", modele "Modele" , couleur "Couleur", plaque "Plaque", louee "Louee", actif "Actif" ');
-					echo vue::rtv_fiche($voitures,"../CONTROL/voitures_fich.php","ID");
+					$voitures->read('voitureID "ID", marque "Marque ", modele "Modele" , couleur "Couleur", plaque "Plaque", louee "Louee" ');
+
+					echo vue::rtv_fiche($voitures,"../control/voitures_fich.php","ID");
+					
+					if($voitures->data[0]->Louee == 0)
+					{
+						echo vue::rtv_Show_Action_Button("Louer", "Louer");
+					}
+					else
+					{
+						echo vue::rtv_Show_Action_Button("Retour", "Retour");
+					}
 				}
 		}
 	}

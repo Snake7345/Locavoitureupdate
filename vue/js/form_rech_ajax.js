@@ -3,20 +3,19 @@ var visuPopup = function(event){
 	var elem=$( this ).closest(".POPUPFORM");
 
 	/*Je récupère l'ID ainsi que l'ACTION du formulaire */
-	$formValeur = $("input[name='RECH_FICH']",elem).attr("value");
+	id = $("input[name='RECH_FICH']",elem).attr("value");
 	$formAction = $("form",elem).attr("action");
 	$formAction = $formAction.replace('.php', '_ajax.php');
 
-	/*Je fais mon call AJAX et j'affiche le POPUP*/
-	$.post( $formAction, { RECH_FICH : $formValeur })
+    /*Je fais mon call AJAX et j'affiche le POPUP*/
+	$.post( $formAction, { RECH_FICH : id })
   		.done(function( data ) {
-
 			var monHTML="\
 						<div id=\"popup1\" class=\"overlay\"> \
 							<div class=\"popup\"> \
 								<h2>Description</h2> \
 								<a class=\"close\" href=\"#\">&times;</a> \
-								<div class=\"content\"> \
+								<div class=\"content\" id=\"popup_"+id+"\"> \
 									"+data+" \
 								</div> \
 							</div>\
@@ -54,22 +53,56 @@ var toggleUtilisateurActive = function(){
 $('#RESULT_RECH_FICH .Actif').on('change', toggleUtilisateurActive);
 
 
-var clicActive2 = function(){
-    var elem2 = this;
+var toggleVoitureLouee = function(){
+    var elem = this;
 
-    var destination2;
-    if(elem2.checked){
-        destination2='control_voiture_louee.php';
+    var destination;
+    if(elem.checked){
+        destination='control_voiture_louee.php';
     }else{
-        destination2='control_voiture_nlouee.php';
+        destination='control_voiture_nlouee.php';
     };
-    $.post( destination2, { voiture : $(this).closest('tr').attr('id') } )
-        .done(function( data ) {
-
-                elem2.empty();
-                elem2.html(data);
-            }
-        );
+    $.post( 
+        destination, 
+        { 
+            voitureID : $(this).closest('tr').attr('id') 
+        } 
+    ).done(function( data ) {
+        this.checked = data.value;
+    });
 };
 
-$('#RESULT_RECH_FICH .Louee').on('change',clicActive2());
+$('#RESULT_RECH_FICH .Louee').on('change',toggleVoitureLouee);
+
+var changeButtonVoiture = function(){
+    var elem = $(this);
+    
+    var destination;
+    if(elem.attr('id') == 'Louer'){
+        destination='control_voiture_louee.php';
+    }else{
+        destination='control_voiture_nlouee.php';
+    };
+    // divId  string   "popup_1001"
+    //    id  ******   "1001"
+    var divId = $(this).closest('div').attr('id');
+    var id = divId.substring(6);
+    $.post( 
+        destination, 
+        { 
+            voitureID : id
+        } 
+    ).done(function( data ) {
+        if(data.value)
+        {
+            alert("La voiture est louée.");
+        }
+        else
+        {
+            alert("La voiture est à nouveau disponible.");
+        }
+    });
+};
+
+$('#Louer').bind('click', changeButtonVoiture);
+$('#Retour').bind('click', changeButtonVoiture);

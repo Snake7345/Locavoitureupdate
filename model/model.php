@@ -18,12 +18,12 @@ class Model{
 			$utilisateur = "root";
 			$motDePasse = '';
 
-
 		  // Options de connection
 			$options = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
 
 		  // Initialisation de la connection
 			$this->connection = new PDO( $dns, $utilisateur, $motDePasse, $options );
+			$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 		} catch ( Exception $e ) {

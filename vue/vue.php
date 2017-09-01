@@ -117,6 +117,12 @@ class Vue{
 		return $ValRetour;
 	
 	}
+	
+	public static function rtv_Show_Action_Button($pSentence, $pIdButton)
+	{
+		$html = "<button id=\"$pIdButton\" type=\"button\">$pSentence</button>";
+		return $html;
+	}
 //----------------------------------------------------------------------------------------------------	
 }
 ?>

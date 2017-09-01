@@ -34,13 +34,15 @@ update utilisateurs
 set actif = 0 
 where utilisateur = idUtilisateur and actif = 1$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Voitures_louee`(IN `idUtilisateur` INT(255))
-update voitures
-set actif = 1 
-where voituresID = idUtilisateur and actif = 0$$
+CREATE PROCEDURE `Voitures_louee`(IN `ID` INT(255))
+BEGIN
+  UPDATE voitures SET louee = 1 WHERE `voitureID` = ID AND louee = 0;
+END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Voitures_nlouee`(IN `idUtilisateur` INT(255))
-update voitures set actif = 0 where voituresID = idUtilisateur and actif = 1$$
+CREATE PROCEDURE `Voitures_nlouee`(IN `ID` INT(255))
+BEGIN
+  UPDATE voitures SET louee = 0 WHERE `voitureID` = ID AND louee = 1;
+END$$
 
 DELIMITER ;
 
@@ -120,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`utilisateur`, `code`, `nom`, `prenom`, `admin`, `actif`) VALUES
-('admin', '123', 'Administrateur', 'EgoMoi', 1, 0),
+('admin', '123', 'Administrateur', 'EgoMoi', 1, 1),
 ('axel', '123', 'Axel', 'Bauduin', 1, 1),
 ('fabian', '123', 'Gillain', 'Fabian', 0, 0),
 ('marco', '123456', 'Gillain', 'Marc', 0, 1),

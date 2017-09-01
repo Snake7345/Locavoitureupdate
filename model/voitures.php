@@ -55,12 +55,12 @@ class voitures extends Model{
 	}
 //----------------------------------------------------------------------------------------------------------------
     function Voitures_louee($Voiture){
-        $sql= "call Voitures_louee (".$Voiture.") ";
+        $sql= "call Voitures_louee ('".$Voiture."') ";
         return $this->connection->query($sql);
     }
 
     function Voitures_nlouee($Voiture){
-        $sql= "call Voitures_nlouee (".$Voiture.") ";
+        $sql= "call Voitures_nlouee ('".$Voiture."') ";
         return $this->connection->query($sql);
     }
 
