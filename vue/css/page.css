@@ -19,7 +19,7 @@ html{
 	background-color: #FF6;
 }
 .header{
-	background-image: url(/Projet%20Web/locavoitures/vue/Images/fondbulles.jpeg);
+	background-image: url(../Images/fondbulles.jpeg);
 	border: 1px solid #d4d4d4;
 	border-radius: 5px;
 	text-align: center;
@@ -30,7 +30,7 @@ section{
 	margin-right: 260px;
 	border: 1px solid #FFCC00;
 	border-radius: 5px;
-	background-image: url(/Projet%20Web/locavoitures/vue/Images/abstract_background_green.jpg);
+	background-image: url(../Images/abstract_background_green.jpg);
 	background-repeat: no-repeat;
 }
 .aside{
@@ -43,7 +43,7 @@ section{
 	border-radius: 5px;
 	padding-left: 5px;
 	padding-top: 5px;
-	background-image: url(/Projet%20Web/locavoitures/vue/Images/fondvert3.jpeg);	
+	background-image: url(../Images/fondvert3.jpeg);	
  }
 #login_page {
 	background-color: rgba(85,127,0,1);

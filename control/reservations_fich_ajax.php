@@ -33,7 +33,7 @@
 				if(!(isset($_POST['FormModeAjax']) && $_POST['FormModeAjax'] == "1")){
 					$rech = $_POST['RECH_FICH'];
 					$reservations->InnerJoinDB($rech,"r");
-					echo vue::rtv_fiche($reservations,"../CONTROL/reservations_fich.php","ID");
+					echo vue::rtv_fiche($reservations,"../control/reservations_fich.php","ID");
 				}
 		}
 	}

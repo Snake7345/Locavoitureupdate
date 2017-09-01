@@ -37,7 +37,7 @@
 				if(!(isset($_POST['FormModeAjax']) && $_POST['FormModeAjax'] == "1")){
 					$clients->id[0]=$_POST['RECH_FICH'];	
 					$clients->read('idclients "CID", nomclient "Nom", prenomclient "Prenom" , adresse "Adresse", cp "CP", localite "Localite", niss "Niss", datnais "Datenaiss", numpermis "Numpermis" ');
-					echo vue::rtv_fiche($clients,"../CONTROL/clients_fich.php","CID");
+					echo vue::rtv_fiche($clients,"../control/clients_fich.php","CID");
 				}
 		}
 	}

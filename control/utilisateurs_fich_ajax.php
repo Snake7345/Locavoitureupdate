@@ -34,7 +34,7 @@
 				if(!(isset($_POST['FormModeAjax']) && $_POST['FormModeAjax'] == "1")){
 					$utilisateurs->id[0]=$_POST['RECH_FICH'];	
 					$utilisateurs->read('utilisateur "Login", code "Code", nom "Nom" , prenom "Prenom", admin "Admin", actif "Actif" ');
-					echo vue::rtv_fiche($utilisateurs,"../CONTROL/utilisateurs_fich.php","Login");
+					echo vue::rtv_fiche($utilisateurs,"../control/utilisateurs_fich.php","Login");
 				}
 		}
 	}
